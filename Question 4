@@ -1,0 +1,9 @@
+gme_revenue=pd.DataFrame(columns=["Date","Revenue"])
+
+for i in src.find_all("tbody")[1].find_all("tr"):
+    col=i.find_all("td")
+    date=col[0].text
+    revenue=col[1].text.replace("$", "").replace(",", "")
+    gme_revenue=gme_revenue.append({"Date":date,"Revenue":revenue},ignore_index=True)
+
+gme_revenue.tail()
